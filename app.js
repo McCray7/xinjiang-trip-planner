@@ -107,7 +107,6 @@ const toggleButtons = Array.from(document.querySelectorAll(".toggle-btn"));
 const realMapElement = document.getElementById("real-map");
 
 let map = null;
-let planPolylines = [];
 let activePolyline = null;
 let markers = [];
 
@@ -252,27 +251,9 @@ async function renderMap(plan) {
   const token = ++state.renderToken;
   clearMapLayers();
   renderPlaceMarkers(plan);
-
-  const routeDays = plan.days.filter((day) => !day.flightOnly && day.path.length >= 2);
   const selectedDay = plan.days.find((day) => day.day === state.activeDay);
 
   try {
-    const dayRoutes = await Promise.all(routeDays.map((day) => getRouteForPath(day.path)));
-    if (token !== state.renderToken) return;
-
-    dayRoutes.forEach((routeResult) => {
-      const polyline = new window.AMap.Polyline({
-        path: routeResult.lngLats,
-        strokeColor: "#b85c38",
-        strokeOpacity: 0.45,
-        strokeWeight: 5,
-        lineJoin: "round",
-        lineCap: "round"
-      });
-      polyline.setMap(map);
-      planPolylines.push(polyline);
-    });
-
     if (!selectedDay.flightOnly && selectedDay.path.length >= 2) {
       const selectedRoute = await getRouteForPath(selectedDay.path);
       if (token !== state.renderToken) return;
@@ -287,18 +268,19 @@ async function renderMap(plan) {
       activePolyline.setMap(map);
     }
 
-    const overlays = [...planPolylines, ...(activePolyline ? [activePolyline] : []), ...markers];
+    const overlays = [...(activePolyline ? [activePolyline] : []), ...markers];
     if (overlays.length) map.setFitView(overlays, false, [36, 36, 36, 36], 14);
     renderItinerary(plan);
   } catch (error) {
     if (token !== state.renderToken) return;
-    mapHint.textContent = `Route loading failed: ${error.message}`;
+    const quotaExceeded = String(error.message || "").includes("CUQPS_HAS_EXCEEDED_THE_LIMIT");
+    mapHint.textContent = quotaExceeded
+      ? "Route loading failed: AMap quota exceeded. The page now loads only the selected day. Wait for quota reset or use a new key."
+      : `Route loading failed: ${error.message}`;
   }
 }
 
 function clearMapLayers() {
-  planPolylines.forEach((item) => item.setMap(null));
-  planPolylines = [];
   if (activePolyline) {
     activePolyline.setMap(null);
     activePolyline = null;
