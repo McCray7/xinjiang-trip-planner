@@ -287,7 +287,10 @@ function init() {
 }
 
 function initMap() {
-  if (!window.L || !realMapElement) return;
+  if (!window.L || !realMapElement) {
+    renderMapUnavailable();
+    return;
+  }
   map = window.L.map(realMapElement, {
     zoomControl: true,
     scrollWheelZoom: true
@@ -297,6 +300,19 @@ function initMap() {
     maxZoom: 18,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
+
+  const refreshMapSize = () => {
+    if (!map) return;
+    setTimeout(() => map.invalidateSize(), 50);
+    setTimeout(() => map.invalidateSize(), 250);
+    setTimeout(() => map.invalidateSize(), 800);
+  };
+
+  map.whenReady(refreshMapSize);
+  window.addEventListener("load", refreshMapSize);
+  window.addEventListener("resize", refreshMapSize);
+  window.addEventListener("orientationchange", refreshMapSize);
+  window.addEventListener("pageshow", refreshMapSize);
 }
 
 function render() {
@@ -473,6 +489,17 @@ function renderMap(plan) {
     ...markers
   ]);
   map.fitBounds(group.getBounds(), { padding: [28, 28] });
+  setTimeout(() => map.invalidateSize(), 80);
+}
+
+function renderMapUnavailable() {
+  if (!realMapElement) return;
+  realMapElement.innerHTML = `
+    <div class="map-error">
+      Map failed to load on this device.<br />
+      Try reopening in a system browser, or refresh once after the page finishes loading.
+    </div>
+  `;
 }
 
 init();

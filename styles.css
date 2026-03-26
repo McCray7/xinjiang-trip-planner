@@ -186,8 +186,22 @@ button {
 .real-map {
   width: 100%;
   height: min(52vh, 430px);
+  min-height: 320px;
   border-radius: 18px;
   overflow: hidden;
+}
+
+.map-error {
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  padding: 20px;
+  text-align: center;
+  line-height: 1.7;
+  color: var(--muted);
+  background: rgba(255, 253, 249, 0.88);
+  border: 1px solid rgba(124, 85, 56, 0.1);
+  border-radius: 18px;
 }
 
 .leaflet-container {
