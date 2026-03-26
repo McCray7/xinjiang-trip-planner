@@ -51,31 +51,13 @@
             <p class="map-hint" id="map-hint">点击下方某一天，高亮当天路段。</p>
           </div>
 
-          <div class="map-controls">
-            <label class="key-field">
-              <span>高德 Key</span>
-              <input
-                id="amap-key-input"
-                type="text"
-                inputmode="text"
-                placeholder="输入 Web JS API Key 后启用真实地图"
-                autocomplete="off"
-              />
-            </label>
-            <div class="map-actions">
-              <button class="ghost-btn" id="save-amap-key" type="button">启用真实地图</button>
-              <button class="ghost-btn" id="clear-amap-key" type="button">清除</button>
-            </div>
-          </div>
-
           <div class="map-stage">
-            <div id="amap-container" class="amap-container is-hidden" aria-label="高德真实地图"></div>
             <svg id="route-map" viewBox="0 0 390 430" aria-label="新疆旅行路线示意图"></svg>
             <div class="map-legend">
               <span><i class="legend-dot plan-color"></i> 当前方案</span>
               <span><i class="legend-dot active-color"></i> 当前选择日程</span>
             </div>
-            <p class="map-mode-note" id="map-mode-note">当前使用示意图模式。输入高德 Key 后可切换到真实地图。</p>
+            <p class="map-mode-note" id="map-mode-note">当前为静态路线总览图，适合手机快速查看整体走向与每日落点。</p>
           </div>
         </section>
 

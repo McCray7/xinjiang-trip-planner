@@ -229,10 +229,7 @@ const mapPoints = {
 
 const state = {
   currentPlanId: "planA",
-  activeDay: 3,
-  mapMode: "svg",
-  amapKey: "",
-  amapReady: false
+  activeDay: 3
 };
 
 const planTitle = document.getElementById("plan-title");
@@ -243,21 +240,12 @@ const itineraryList = document.getElementById("itinerary-list");
 const compareGrid = document.getElementById("compare-grid");
 const checklistList = document.getElementById("checklist");
 const routeMap = document.getElementById("route-map");
-const amapContainer = document.getElementById("amap-container");
 const mapHint = document.getElementById("map-hint");
 const mapModeNote = document.getElementById("map-mode-note");
 const jumpBestDay = document.getElementById("jump-best-day");
 const toggleButtons = Array.from(document.querySelectorAll(".toggle-btn"));
-const amapKeyInput = document.getElementById("amap-key-input");
-const saveAmapKeyButton = document.getElementById("save-amap-key");
-const clearAmapKeyButton = document.getElementById("clear-amap-key");
-
-let amapMap = null;
-let amapMarkers = [];
-let amapPolylines = [];
 
 function init() {
-  hydrateAmapKey();
   renderCompareGrid();
   renderChecklist();
   render();
@@ -279,49 +267,6 @@ function init() {
       target.focus({ preventScroll: true });
     }
   });
-
-  saveAmapKeyButton.addEventListener("click", () => {
-    const key = amapKeyInput.value.trim();
-    if (!key) {
-      setMapMode("svg", "未输入高德 Key，继续使用示意图模式。");
-      return;
-    }
-    window.localStorage.setItem("xinjiang_trip_amap_key", key);
-    state.amapKey = key;
-    loadAmap();
-  });
-
-  clearAmapKeyButton.addEventListener("click", () => {
-    window.localStorage.removeItem("xinjiang_trip_amap_key");
-    state.amapKey = "";
-    amapKeyInput.value = "";
-    teardownAmap();
-    setMapMode("svg", "已清除高德 Key，当前使用示意图模式。");
-    renderMap(plans[state.currentPlanId]);
-  });
-}
-
-function render() {
-  const plan = plans[state.currentPlanId];
-  planTitle.textContent = `${plan.title} · ${plan.range}`;
-  planSummary.textContent = plan.verdict;
-  renderStats(plan);
-  renderReasons(plan);
-  renderToggleState();
-  renderItinerary(plan);
-  renderMap(plan);
-}
-
-function hydrateAmapKey() {
-  const urlKey = new URLSearchParams(window.location.search).get("amapKey");
-  const savedKey = urlKey || window.localStorage.getItem("xinjiang_trip_amap_key") || "";
-  state.amapKey = savedKey;
-  amapKeyInput.value = savedKey;
-  if (savedKey) {
-    loadAmap();
-  } else {
-    setMapMode("svg", "当前使用示意图模式。输入高德 Key 后可切换到真实地图。");
-  }
 }
 
 function renderStats(plan) {
@@ -429,15 +374,6 @@ function renderChecklist() {
 }
 
 function renderMap(plan) {
-  if (state.mapMode === "amap" && state.amapReady) {
-    routeMap.classList.add("is-hidden");
-    amapContainer.classList.remove("is-hidden");
-    renderAmap(plan);
-    return;
-  }
-
-  amapContainer.classList.add("is-hidden");
-  routeMap.classList.remove("is-hidden");
   const activePath = plan.days.find((item) => item.day === state.activeDay)?.path || [];
   const basePath = buildPath(plan.routeOrder);
   const highlightPath = buildPath(activePath);
@@ -453,161 +389,17 @@ function renderMap(plan) {
   `;
 }
 
-function setMapMode(mode, note) {
-  state.mapMode = mode;
-  mapModeNote.textContent = note;
+function render() {
+  const plan = plans[state.currentPlanId];
+  planTitle.textContent = `${plan.title} · ${plan.range}`;
+  planSummary.textContent = plan.verdict;
+  mapModeNote.textContent = "当前为静态路线总览图，适合手机快速查看整体走向与每日落点。";
+  renderStats(plan);
+  renderReasons(plan);
+  renderToggleState();
+  renderItinerary(plan);
+  renderMap(plan);
 }
-
-function loadAmap() {
-  if (!state.amapKey) {
-    setMapMode("svg", "当前使用示意图模式。输入高德 Key 后可切换到真实地图。");
-    return;
-  }
-
-  if (window.AMap) {
-    bootAmap();
-    return;
-  }
-
-  const script = document.createElement("script");
-  script.src = `https://webapi.amap.com/maps?v=2.0&key=${encodeURIComponent(state.amapKey)}`;
-  script.async = true;
-  script.onload = () => bootAmap();
-  script.onerror = () => {
-    teardownAmap();
-    setMapMode("svg", "高德地图加载失败，请检查 Key 是否正确，或继续使用示意图模式。");
-    renderMap(plans[state.currentPlanId]);
-  };
-  document.head.appendChild(script);
-}
-
-function bootAmap() {
-  if (!window.AMap) {
-    setMapMode("svg", "高德地图 SDK 未就绪，继续使用示意图模式。");
-    return;
-  }
-
-  if (!amapMap) {
-    amapMap = new window.AMap.Map("amap-container", {
-      zoom: 5.7,
-      center: [84.6, 43.1],
-      viewMode: "2D",
-      resizeEnable: true,
-      mapStyle: "amap://styles/whitesmoke"
-    });
-  }
-
-  state.amapReady = true;
-  setMapMode("amap", "当前使用高德真实地图模式。点击每日行程会同步高亮线路。");
-  renderMap(plans[state.currentPlanId]);
-}
-
-function teardownAmap() {
-  state.amapReady = false;
-  if (!amapMap) return;
-  amapMarkers.forEach((marker) => marker.setMap(null));
-  amapPolylines.forEach((polyline) => polyline.setMap(null));
-  amapMarkers = [];
-  amapPolylines = [];
-}
-
-function renderAmap(plan) {
-  if (!amapMap || !window.AMap) return;
-
-  amapMarkers.forEach((marker) => marker.setMap(null));
-  amapPolylines.forEach((polyline) => polyline.setMap(null));
-  amapMarkers = [];
-  amapPolylines = [];
-
-  const activePathNames = plan.days.find((item) => item.day === state.activeDay)?.path || [];
-  const baseCoords = plan.routeOrder.map((name) => cityCoords[name]).filter(Boolean);
-  const activeCoords = activePathNames.map((name) => cityCoords[name]).filter(Boolean);
-
-  if (baseCoords.length >= 2) {
-    const baseLine = new window.AMap.Polyline({
-      path: baseCoords,
-      strokeColor: "#b85c38",
-      strokeOpacity: 0.55,
-      strokeWeight: 6,
-      strokeStyle: "solid",
-      lineJoin: "round",
-      lineCap: "round"
-    });
-    baseLine.setMap(amapMap);
-    amapPolylines.push(baseLine);
-  }
-
-  if (activeCoords.length >= 2) {
-    const activeLine = new window.AMap.Polyline({
-      path: activeCoords,
-      strokeColor: "#679b8a",
-      strokeOpacity: 0.95,
-      strokeWeight: 8,
-      strokeStyle: "solid",
-      lineJoin: "round",
-      lineCap: "round"
-    });
-    activeLine.setMap(amapMap);
-    amapPolylines.push(activeLine);
-  }
-
-  Array.from(new Set(plan.routeOrder)).forEach((name) => {
-    const coord = cityCoords[name];
-    if (!coord) return;
-    const isActive = activePathNames.includes(name);
-    const marker = new window.AMap.Marker({
-      position: coord,
-      offset: new window.AMap.Pixel(-10, -10),
-      content: `
-        <div style="
-          width:20px;height:20px;border-radius:999px;
-          background:${isActive ? "#679b8a" : "#b85c38"};
-          border:3px solid rgba(255,255,255,.92);
-          box-shadow:0 6px 14px rgba(0,0,0,.18);
-        "></div>
-      `,
-      title: name
-    });
-    marker.setMap(amapMap);
-    amapMarkers.push(marker);
-
-    const labelMarker = new window.AMap.Marker({
-      position: coord,
-      offset: new window.AMap.Pixel(18, -12),
-      content: `
-        <div style="
-          background:rgba(255,248,240,.96);
-          color:#2d2119;
-          border:1px solid rgba(124,85,56,.12);
-          border-radius:999px;
-          padding:4px 10px;
-          font-size:12px;
-          font-weight:700;
-          white-space:nowrap;
-          box-shadow:0 8px 18px rgba(0,0,0,.08);
-        ">${name}</div>
-      `
-    });
-    labelMarker.setMap(amapMap);
-    amapMarkers.push(labelMarker);
-  });
-
-  const fitTargets = activeCoords.length >= 2 ? activeCoords : baseCoords;
-  if (fitTargets.length) {
-    amapMap.setFitView(amapMarkers, false, [42, 42, 42, 42], 15);
-  }
-}
-
-const cityCoords = {
-  上海: [121.4737, 31.2304],
-  伊宁: [81.2773, 43.9168],
-  霍城: [80.8783, 44.0533],
-  赛里木湖: [81.2056, 44.5994],
-  特克斯: [81.8363, 43.2194],
-  琼库什台: [82.0105, 43.1028],
-  那拉提: [83.1726, 43.4746],
-  唐布拉: [83.0178, 43.6665]
-};
 
 function renderGridLines() {
   const verticals = [54, 108, 162, 216, 270, 324].map(

@@ -187,59 +187,10 @@ button {
   border: 1px solid rgba(114, 94, 72, 0.1);
 }
 
-.map-controls {
-  display: grid;
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.key-field {
-  display: grid;
-  gap: 8px;
-}
-
-.key-field span {
-  font-size: 0.84rem;
-  color: var(--muted);
-}
-
-.key-field input {
-  width: 100%;
-  border: 1px solid rgba(124, 85, 56, 0.18);
-  border-radius: 16px;
-  padding: 12px 14px;
-  font: inherit;
-  background: rgba(255, 252, 247, 0.92);
-  color: var(--text);
-}
-
-.key-field input:focus {
-  outline: 2px solid rgba(103, 155, 138, 0.22);
-  border-color: rgba(103, 155, 138, 0.65);
-}
-
-.map-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
 #route-map {
   width: 100%;
   display: block;
   border-radius: 18px;
-}
-
-.amap-container {
-  width: 100%;
-  height: min(52vh, 420px);
-  border-radius: 18px;
-  overflow: hidden;
-  margin-bottom: 10px;
-}
-
-.is-hidden {
-  display: none !important;
 }
 
 .map-hint {
@@ -484,10 +435,5 @@ button {
 
   .stats {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .map-controls {
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: end;
   }
 }
