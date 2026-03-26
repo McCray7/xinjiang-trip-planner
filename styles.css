@@ -1,15 +1,11 @@
 :root {
   --bg: #f4efe5;
   --panel: rgba(255, 251, 245, 0.88);
-  --panel-strong: #fff8ee;
-  --line: rgba(91, 63, 41, 0.16);
   --text: #2d2119;
   --muted: #715b4f;
   --accent: #b85c38;
   --accent-strong: #7f3117;
-  --accent-soft: #e8c4a6;
   --mint: #679b8a;
-  --sky: #b7d6e8;
   --shadow: 0 18px 40px rgba(76, 45, 23, 0.12);
   --radius: 24px;
 }
@@ -187,10 +183,20 @@ button {
   border: 1px solid rgba(114, 94, 72, 0.1);
 }
 
-#route-map {
+.real-map {
   width: 100%;
-  display: block;
+  height: min(52vh, 430px);
   border-radius: 18px;
+  overflow: hidden;
+}
+
+.leaflet-container {
+  font: inherit;
+  background: #eaf0ee;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
 }
 
 .map-hint {
@@ -229,6 +235,33 @@ button {
 
 .active-color {
   background: var(--mint);
+}
+
+.map-pin {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  border: 3px solid rgba(255, 255, 255, 0.92);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+.map-pin.is-active {
+  background: var(--mint);
+}
+
+.leaflet-tooltip.route-label {
+  background: rgba(255, 248, 240, 0.96);
+  border: 1px solid rgba(124, 85, 56, 0.12);
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  color: var(--text);
+  font-weight: 700;
+  padding: 4px 10px;
+}
+
+.leaflet-tooltip.route-label::before {
+  display: none;
 }
 
 .ghost-btn {
@@ -372,60 +405,6 @@ button {
   font-size: 0.8rem;
   color: var(--muted);
   margin-bottom: 4px;
-}
-
-.map-bg {
-  fill: rgba(255, 251, 244, 0.9);
-  stroke: rgba(113, 91, 79, 0.12);
-  stroke-width: 1.5;
-}
-
-.map-grid {
-  stroke: rgba(113, 91, 79, 0.08);
-  stroke-width: 1;
-}
-
-.route-base {
-  fill: none;
-  stroke: rgba(184, 92, 56, 0.28);
-  stroke-width: 6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.route-highlight {
-  fill: none;
-  stroke: var(--mint);
-  stroke-width: 8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.node {
-  fill: var(--accent);
-  stroke: rgba(255, 248, 242, 0.95);
-  stroke-width: 4;
-}
-
-.node.active {
-  fill: var(--mint);
-}
-
-.node-label {
-  font-size: 13px;
-  fill: var(--text);
-  font-weight: 700;
-}
-
-.map-chip {
-  fill: rgba(255, 248, 240, 0.96);
-  stroke: rgba(124, 85, 56, 0.12);
-  stroke-width: 1;
-}
-
-.route-caption {
-  font-size: 12px;
-  fill: var(--muted);
 }
 
 @media (min-width: 700px) {

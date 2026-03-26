@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>新疆自驾旅行计划</title>
+    <title>Xinjiang Road Trip Planner</title>
     <meta
       name="description"
-      content="上海出发新疆伊犁落地自驾旅行计划，支持 8 天 7 晚与 6 天 5 晚方案切换、每日行程查看与路线地图展示。"
+      content="Mobile-first Xinjiang Yili road trip planner with real map, itinerary cards, estimated distance, and driving time."
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -14,9 +20,10 @@
     <div class="app-shell">
       <header class="hero">
         <p class="eyebrow">Mobile Trip Planner</p>
-        <h1>新疆伊犁落地自驾计划</h1>
+        <h1>Xinjiang Yili Road Trip</h1>
         <p class="hero-copy">
-          面向手机使用设计。切换两套方案，查看每日路线、住宿落点、驾驶强度和整体对比。
+          Built for mobile. Switch between two plans and check the real map, daily route,
+          estimated distance, driving time, and hotel stop for each day.
         </p>
       </header>
 
@@ -24,15 +31,15 @@
         <section class="panel summary-panel">
           <div class="summary-top">
             <div>
-              <p class="section-kicker">推荐结论</p>
-              <h2 id="plan-title">8天7晚更优</h2>
+              <p class="section-kicker">Recommendation</p>
+              <h2 id="plan-title">8D7N is better</h2>
             </div>
-            <div class="toggle" role="tablist" aria-label="方案切换">
+            <div class="toggle" role="tablist" aria-label="Plan switcher">
               <button class="toggle-btn is-active" data-plan="planA" role="tab" aria-selected="true">
-                8天7晚
+                8D7N
               </button>
               <button class="toggle-btn" data-plan="planB" role="tab" aria-selected="false">
-                6天5晚
+                6D5N
               </button>
             </div>
           </div>
@@ -45,29 +52,31 @@
         <section class="panel map-panel">
           <div class="section-head">
             <div>
-              <p class="section-kicker">路线地图</p>
-              <h2>按天查看行车路线</h2>
+              <p class="section-kicker">Real Map</p>
+              <h2>Scenic stops and daily route</h2>
             </div>
-            <p class="map-hint" id="map-hint">点击下方某一天，高亮当天路段。</p>
+            <p class="map-hint" id="map-hint">Tap a day card below to highlight that day's route.</p>
           </div>
 
           <div class="map-stage">
-            <svg id="route-map" viewBox="0 0 390 430" aria-label="新疆旅行路线示意图"></svg>
+            <div id="real-map" class="real-map" aria-label="Real world trip map"></div>
             <div class="map-legend">
-              <span><i class="legend-dot plan-color"></i> 当前方案</span>
-              <span><i class="legend-dot active-color"></i> 当前选择日程</span>
+              <span><i class="legend-dot plan-color"></i> full route</span>
+              <span><i class="legend-dot active-color"></i> selected day</span>
             </div>
-            <p class="map-mode-note" id="map-mode-note">当前为静态路线总览图，适合手机快速查看整体走向与每日落点。</p>
+            <p class="map-mode-note" id="map-mode-note">
+              Uses a real world map. Distance and drive time are trip-planning estimates, not live navigation data.
+            </p>
           </div>
         </section>
 
         <section class="panel itinerary-panel">
           <div class="section-head">
             <div>
-              <p class="section-kicker">每日行程</p>
-              <h2>适合路上随时查看</h2>
+              <p class="section-kicker">Daily Plan</p>
+              <h2>Fast to read on the road</h2>
             </div>
-            <button class="ghost-btn" id="jump-best-day" type="button">跳到推荐亮点日</button>
+            <button class="ghost-btn" id="jump-best-day" type="button">Jump to best day</button>
           </div>
           <div class="itinerary-list" id="itinerary-list"></div>
         </section>
@@ -75,8 +84,8 @@
         <section class="panel compare-panel">
           <div class="section-head">
             <div>
-              <p class="section-kicker">两案对比</p>
-              <h2>一眼看出差异</h2>
+              <p class="section-kicker">Compare</p>
+              <h2>See the tradeoff quickly</h2>
             </div>
           </div>
           <div class="compare-grid" id="compare-grid"></div>
@@ -85,8 +94,8 @@
         <section class="panel checklist-panel">
           <div class="section-head">
             <div>
-              <p class="section-kicker">出发前</p>
-              <h2>执行清单</h2>
+              <p class="section-kicker">Before You Go</p>
+              <h2>Checklist</h2>
             </div>
           </div>
           <ol class="checklist" id="checklist"></ol>
@@ -94,6 +103,11 @@
       </main>
     </div>
 
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
     <script src="./app.js"></script>
   </body>
 </html>
