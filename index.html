@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>新疆自驾旅行计划</title>
+    <title>Xinjiang Road Trip Planner</title>
     <meta
       name="description"
-      content="手机优先的新疆伊犁自驾旅行规划页面，包含真实地图、每日行程、预计里程和驾驶时间。"
+      content="Mobile-first Xinjiang Yili road trip planner with real driving routes, distance, and drive time."
     />
     <link rel="stylesheet" href="./vendor/leaflet.css" />
     <link rel="stylesheet" href="./styles.css" />
@@ -15,9 +15,10 @@
     <div class="app-shell">
       <header class="hero">
         <p class="eyebrow">Mobile Trip Planner</p>
-        <h1>新疆伊犁落地自驾</h1>
+        <h1>Xinjiang Yili Road Trip</h1>
         <p class="hero-copy">
-          面向手机使用设计。切换两套方案，查看真实地图、每日路线、预计里程、驾驶时间和住宿落点。
+          Mobile-first trip planner with real driving routes powered by AMap route service.
+          Tap a day to see the actual road path, distance, drive time, and hotel stop.
         </p>
       </header>
 
@@ -25,15 +26,15 @@
         <section class="panel summary-panel">
           <div class="summary-top">
             <div>
-              <p class="section-kicker">推荐结论</p>
-              <h2 id="plan-title">8天7晚更优</h2>
+              <p class="section-kicker">Recommendation</p>
+              <h2 id="plan-title">8D7N is better</h2>
             </div>
-            <div class="toggle" role="tablist" aria-label="方案切换">
+            <div class="toggle" role="tablist" aria-label="Plan switcher">
               <button class="toggle-btn is-active" data-plan="planA" role="tab" aria-selected="true">
-                8天7晚
+                8D7N
               </button>
               <button class="toggle-btn" data-plan="planB" role="tab" aria-selected="false">
-                6天5晚
+                6D5N
               </button>
             </div>
           </div>
@@ -46,20 +47,20 @@
         <section class="panel map-panel">
           <div class="section-head">
             <div>
-              <p class="section-kicker">真实地图</p>
-              <h2>看景点位置和当天路线</h2>
+              <p class="section-kicker">Real Route Map</p>
+              <h2>Actual roads instead of straight lines</h2>
             </div>
-            <p class="map-hint" id="map-hint">点击下方某一天，高亮当天路线。</p>
+            <p class="map-hint" id="map-hint">Tap a day card below to highlight that day's real driving route.</p>
           </div>
 
           <div class="map-stage">
-            <div id="real-map" class="real-map" aria-label="真实世界旅行地图"></div>
+            <div id="real-map" class="real-map" aria-label="Real road trip map"></div>
             <div class="map-legend">
-              <span><i class="legend-dot plan-color"></i> 当前方案总路线</span>
-              <span><i class="legend-dot active-color"></i> 当前选择日程</span>
+              <span><i class="legend-dot plan-color"></i> full plan routes</span>
+              <span><i class="legend-dot active-color"></i> selected day route</span>
             </div>
             <p class="map-mode-note" id="map-mode-note">
-              当前为真实世界地图。距离和驾驶时间为旅行规划预估值，不是实时导航结果。
+              Route geometry, distance, and drive time come from AMap driving route service. Values may vary by route strategy and road conditions.
             </p>
           </div>
         </section>
@@ -67,10 +68,10 @@
         <section class="panel itinerary-panel">
           <div class="section-head">
             <div>
-              <p class="section-kicker">每日行程</p>
-              <h2>适合路上随时查看</h2>
+              <p class="section-kicker">Daily Plan</p>
+              <h2>Fast to read on the road</h2>
             </div>
-            <button class="ghost-btn" id="jump-best-day" type="button">跳到推荐亮点日</button>
+            <button class="ghost-btn" id="jump-best-day" type="button">Jump to highlight day</button>
           </div>
           <div class="itinerary-list" id="itinerary-list"></div>
         </section>
@@ -78,8 +79,8 @@
         <section class="panel compare-panel">
           <div class="section-head">
             <div>
-              <p class="section-kicker">两案对比</p>
-              <h2>一眼看出差异</h2>
+              <p class="section-kicker">Compare</p>
+              <h2>See the tradeoff quickly</h2>
             </div>
           </div>
           <div class="compare-grid" id="compare-grid"></div>
@@ -88,8 +89,8 @@
         <section class="panel checklist-panel">
           <div class="section-head">
             <div>
-              <p class="section-kicker">出发前</p>
-              <h2>执行清单</h2>
+              <p class="section-kicker">Before You Go</p>
+              <h2>Checklist</h2>
             </div>
           </div>
           <ol class="checklist" id="checklist"></ol>
