@@ -1,89 +1,89 @@
 const AMAP_KEY = "f2ab236a325dd234cbfa55b782ec5bb8";
 
 const places = {
-  Shanghai: { label: "Shanghai", lat: 31.2304, lng: 121.4737 },
-  Yining: { label: "Yining", lat: 43.9168, lng: 81.2773 },
-  Huocheng: { label: "Huocheng", lat: 44.0533, lng: 80.8783 },
-  SayramLake: { label: "Sayram Lake", lat: 44.5994, lng: 81.2056 },
-  Tekes: { label: "Tekes", lat: 43.2194, lng: 81.8363 },
-  Kalajun: { label: "Kalajun", lat: 43.163, lng: 81.901276 },
-  Qiongkushitai: { label: "Qiongkushitai", lat: 43.1028, lng: 82.0105 },
-  Nalati: { label: "Nalati", lat: 43.4746, lng: 83.1726 },
-  Tangbula: { label: "Tangbula", lat: 43.6665, lng: 83.0178 }
+  Shanghai: { label: "上海", lat: 31.2304, lng: 121.4737 },
+  Yining: { label: "伊宁", lat: 43.9168, lng: 81.2773 },
+  Huocheng: { label: "霍城", lat: 44.0533, lng: 80.8783 },
+  SayramLake: { label: "赛里木湖", lat: 44.5994, lng: 81.2056 },
+  Tekes: { label: "特克斯", lat: 43.2194, lng: 81.8363 },
+  Kalajun: { label: "喀拉峻", lat: 43.163, lng: 81.901276 },
+  Qiongkushitai: { label: "琼库什台", lat: 43.1028, lng: 82.0105 },
+  Nalati: { label: "那拉提", lat: 43.4746, lng: 83.1726 },
+  Tangbula: { label: "唐布拉", lat: 43.6665, lng: 83.0178 }
 };
 
 const plans = {
   planA: {
     id: "planA",
-    title: "8D7N is better",
+    title: "8天7晚更优",
     range: "2026.06.13 - 2026.06.20",
-    intensity: "moderate and relaxed",
-    holidayImpact: "holiday only at the end",
-    value: "best value",
+    intensity: "节奏适中，更从容",
+    holidayImpact: "仅尾段撞上假期",
+    value: "性价比最佳",
     verdict:
-      "This plan finishes the strongest scenic stretch before the holiday peak, gives you a fuller loop, and spreads fixed costs over more useful days.",
+      "这个方案能在假期高峰前走完最核心的风景段，环线更完整，固定成本也能分摊到更有效的游玩天数上。",
     reasons: [
-      "Only the final part overlaps with the holiday peak.",
-      "It covers Sayram Lake, Kalajun, Nalati, Huocheng, and Qiongkushitai without major cuts.",
-      "It is more couple-friendly because the pace is less rushed."
+      "只有最后一段与假期高峰重叠。",
+      "赛里木湖、喀拉峻、那拉提、霍城、琼库什台都能覆盖，基本不用大砍行程。",
+      "整体不赶，更适合情侣自驾。"
     ],
     highlightDay: 3,
     days: [
-      { day: 1, date: "Jun 13 Sat", title: "Fly to Yining", routeLabel: "Shanghai -> Yining", stay: "Yining", focus: "rest", notes: "Keep day one light.", path: ["Shanghai", "Yining"], flightOnly: true },
-      { day: 2, date: "Jun 14 Sun", title: "Huocheng lavender and Sayram Lake", routeLabel: "Yining -> Huocheng -> Sayram Lake", stay: "Sayram Lake area", focus: "flowers and lake", notes: "Lavender in the morning, lake in the afternoon.", path: ["Yining", "Huocheng", "SayramLake"] },
-      { day: 3, date: "Jun 15 Mon", title: "Sayram Lake loop then Tekes", routeLabel: "Sayram Lake -> Tekes", stay: "Tekes", focus: "lake loop", notes: "Highlight day.", path: ["SayramLake", "Tekes"] },
-      { day: 4, date: "Jun 16 Tue", title: "Full Kalajun day", routeLabel: "Tekes -> Kalajun -> Tekes", stay: "Tekes", focus: "grassland", notes: "Give Kalajun a full day.", path: ["Tekes", "Kalajun", "Tekes"] },
-      { day: 5, date: "Jun 17 Wed", title: "Slow couple day in Qiongkushitai", routeLabel: "Tekes -> Qiongkushitai", stay: "Qiongkushitai or Tekes", focus: "village", notes: "Cabins, slopes, optional horse riding.", path: ["Tekes", "Qiongkushitai"] },
-      { day: 6, date: "Jun 18 Thu", title: "Drive to Nalati", routeLabel: "Qiongkushitai -> Nalati", stay: "Nalati town", focus: "grassland road", notes: "Pick one core Nalati line.", path: ["Qiongkushitai", "Nalati"] },
-      { day: 7, date: "Jun 19 Fri", title: "Holiday starts, avoid the worst crowd", routeLabel: "Nalati -> Tangbula -> Yining", stay: "Nilka or Yining", focus: "flex day", notes: "Tangbula is the safer flexible option.", path: ["Nalati", "Tangbula", "Yining"] },
-      { day: 8, date: "Jun 20 Sat", title: "Fly back", routeLabel: "Yining -> Shanghai", stay: "travel day", focus: "return", notes: "Leave enough airport buffer.", path: ["Yining", "Shanghai"], flightOnly: true }
+      { day: 1, date: "6月13日 周六", title: "飞抵伊宁", routeLabel: "上海 -> 伊宁", stay: "伊宁", focus: "休整", notes: "第一天尽量放轻松。", path: ["Shanghai", "Yining"], flightOnly: true },
+      { day: 2, date: "6月14日 周日", title: "霍城薰衣草 + 赛里木湖", routeLabel: "伊宁 -> 霍城 -> 赛里木湖", stay: "赛里木湖周边", focus: "花海湖景", notes: "上午看薰衣草，下午进湖区。", path: ["Yining", "Huocheng", "SayramLake"] },
+      { day: 3, date: "6月15日 周一", title: "环湖后前往特克斯", routeLabel: "赛里木湖 -> 特克斯", stay: "特克斯", focus: "湖景公路", notes: "重点推荐日。", path: ["SayramLake", "Tekes"] },
+      { day: 4, date: "6月16日 周二", title: "喀拉峻完整一日", routeLabel: "特克斯 -> 喀拉峻 -> 特克斯", stay: "特克斯", focus: "草原", notes: "把喀拉峻留足一整天。", path: ["Tekes", "Kalajun", "Tekes"] },
+      { day: 5, date: "6月17日 周三", title: "琼库什台慢节奏情侣日", routeLabel: "特克斯 -> 琼库什台", stay: "琼库什台或特克斯", focus: "村落", notes: "木屋、山坡、可选骑马。", path: ["Tekes", "Qiongkushitai"] },
+      { day: 6, date: "6月18日 周四", title: "驱车前往那拉提", routeLabel: "琼库什台 -> 那拉提", stay: "那拉提镇", focus: "草原公路", notes: "当天挑一条核心线路即可。", path: ["Qiongkushitai", "Nalati"] },
+      { day: 7, date: "6月19日 周五", title: "假期开始，避开最拥挤时段", routeLabel: "那拉提 -> 唐布拉 -> 伊宁", stay: "尼勒克或伊宁", focus: "弹性机动", notes: "唐布拉更适合作为灵活备选。", path: ["Nalati", "Tangbula", "Yining"] },
+      { day: 8, date: "6月20日 周六", title: "返程飞回上海", routeLabel: "伊宁 -> 上海", stay: "返程", focus: "返程", notes: "给机场预留充足时间。", path: ["Yining", "Shanghai"], flightOnly: true }
     ]
   },
   planB: {
     id: "planB",
-    title: "6D5N saves leave days",
+    title: "6天5晚更省请假",
     range: "2026.06.17 - 2026.06.22",
-    intensity: "moderate and rushed",
-    holidayImpact: "core days hit the holiday",
-    value: "fewer leave days",
+    intensity: "强度适中，但更赶",
+    holidayImpact: "核心游玩日撞上假期",
+    value: "请假更省",
     verdict:
-      "This version is workable, but it pushes the best sightseeing days into the holiday peak. It saves leave days, but the pace is tighter and the value is weaker.",
+      "这个版本可以走通，但最好的游玩日会被推到假期高峰。虽然更省请假，但节奏更紧，整体性价比偏弱。",
     reasons: [
-      "Core sightseeing days overlap with the holiday dates.",
-      "Effective sightseeing time is only about four days.",
-      "You need to cut depth from Kalajun or Qiongkushitai."
+      "核心游玩日与假期日期重叠。",
+      "真正有效的游玩时间只有约四天。",
+      "喀拉峻或琼库什台需要压缩深度。"
     ],
     highlightDay: 2,
     days: [
-      { day: 1, date: "Jun 17 Wed", title: "Fly to Yining", routeLabel: "Shanghai -> Yining", stay: "Yining", focus: "rest", notes: "Keep day one light.", path: ["Shanghai", "Yining"], flightOnly: true },
-      { day: 2, date: "Jun 18 Thu", title: "Huocheng lavender and Sayram Lake", routeLabel: "Yining -> Huocheng -> Sayram Lake", stay: "Sayram Lake area", focus: "flowers and lake", notes: "Smoothest day in the short plan.", path: ["Yining", "Huocheng", "SayramLake"] },
-      { day: 3, date: "Jun 19 Fri", title: "Holiday starts, then Tekes", routeLabel: "Sayram Lake -> Tekes", stay: "Tekes", focus: "lake loop", notes: "Start early.", path: ["SayramLake", "Tekes"] },
-      { day: 4, date: "Jun 20 Sat", title: "Kalajun day", routeLabel: "Tekes -> Kalajun -> Tekes", stay: "Tekes or Xinyuan", focus: "grassland", notes: "Kalajun is the default route example for this day.", path: ["Tekes", "Kalajun", "Tekes"] },
-      { day: 5, date: "Jun 21 Sun", title: "Nalati peak day", routeLabel: "Tekes -> Nalati -> Yining", stay: "Nalati town or Yining", focus: "core grassland", notes: "Traffic may build up.", path: ["Tekes", "Nalati", "Yining"] },
-      { day: 6, date: "Jun 22 Mon", title: "Fly back", routeLabel: "Yining -> Shanghai", stay: "travel day", focus: "return", notes: "Return early if needed.", path: ["Yining", "Shanghai"], flightOnly: true }
+      { day: 1, date: "6月17日 周三", title: "飞抵伊宁", routeLabel: "上海 -> 伊宁", stay: "伊宁", focus: "休整", notes: "第一天尽量放轻松。", path: ["Shanghai", "Yining"], flightOnly: true },
+      { day: 2, date: "6月18日 周四", title: "霍城薰衣草 + 赛里木湖", routeLabel: "伊宁 -> 霍城 -> 赛里木湖", stay: "赛里木湖周边", focus: "花海湖景", notes: "短方案里最顺的一天。", path: ["Yining", "Huocheng", "SayramLake"] },
+      { day: 3, date: "6月19日 周五", title: "假期开始后转往特克斯", routeLabel: "赛里木湖 -> 特克斯", stay: "特克斯", focus: "湖景公路", notes: "建议尽早出发。", path: ["SayramLake", "Tekes"] },
+      { day: 4, date: "6月20日 周六", title: "喀拉峻一日", routeLabel: "特克斯 -> 喀拉峻 -> 特克斯", stay: "特克斯或新源", focus: "草原", notes: "这一天默认优先喀拉峻。", path: ["Tekes", "Kalajun", "Tekes"] },
+      { day: 5, date: "6月21日 周日", title: "那拉提高峰日", routeLabel: "特克斯 -> 那拉提 -> 伊宁", stay: "那拉提镇或伊宁", focus: "核心草原", notes: "车流可能明显上来。", path: ["Tekes", "Nalati", "Yining"] },
+      { day: 6, date: "6月22日 周一", title: "返程飞回上海", routeLabel: "伊宁 -> 上海", stay: "返程", focus: "返程", notes: "如有需要可选更早航班。", path: ["Yining", "Shanghai"], flightOnly: true }
     ]
   }
 };
 
 const compareRows = [
-  ["overall", "recommended", "backup option"],
-  ["leave pressure", "slightly higher", "slightly lower"],
-  ["holiday overlap", "only at the end", "core days overlap"],
-  ["traffic risk", "medium", "higher"],
-  ["price surge", "medium", "higher"],
-  ["coverage", "high", "medium"],
-  ["pace", "comfortable", "rushed"],
-  ["couple friendly", "high", "medium"],
-  ["value", "better", "average"],
-  ["final call", "best choice", "only if leave is tight"]
+  ["整体判断", "推荐主方案", "备选方案"],
+  ["请假压力", "略高", "略低"],
+  ["假期重叠", "仅尾段重叠", "核心日重叠"],
+  ["堵车风险", "中等", "更高"],
+  ["价格上涨", "中等", "更高"],
+  ["覆盖度", "高", "中"],
+  ["节奏", "舒适", "偏赶"],
+  ["情侣友好度", "高", "中"],
+  ["性价比", "更好", "一般"],
+  ["最终建议", "优先选择", "仅在请假很紧时考虑"]
 ];
 
 const checklist = [
-  "Compare direct and connecting flights to Yining.",
-  "Choose an SUV first.",
-  "Lock key hotel stops early.",
-  "Recheck Duku and Yizhao road status before departure.",
-  "Use an easier route if only one person drives."
+  "比较伊宁直飞和中转航班价格与时间。",
+  "租车优先选 SUV。",
+  "尽早锁定关键住宿点。",
+  "出发前再次确认独库和伊昭公路通行状态。",
+  "如果只有一人驾驶，优先走更轻松的线路。"
 ];
 
 const routeCache = new Map();
@@ -119,7 +119,7 @@ function init() {
       render();
     })
     .catch((error) => {
-      renderMapUnavailable(`AMap failed: ${error.message}`);
+      renderMapUnavailable(`高德地图加载失败：${error.message}`);
       render();
     });
 
@@ -146,7 +146,7 @@ function loadAmapScript() {
     script.src = `https://webapi.amap.com/maps?v=2.0&key=${encodeURIComponent(AMAP_KEY)}`;
     script.async = true;
     script.onload = resolve;
-    script.onerror = () => reject(new Error("JS API load failed"));
+    script.onerror = () => reject(new Error("JS API 加载失败"));
     document.head.appendChild(script);
   });
 }
@@ -175,10 +175,10 @@ function render() {
 
 function renderStats(plan) {
   const stats = [
-    ["pace", plan.intensity],
-    ["holiday", plan.holidayImpact],
-    ["value", plan.value],
-    ["fit", "first-time couple trip"]
+    ["节奏", plan.intensity],
+    ["假期影响", plan.holidayImpact],
+    ["性价比", plan.value],
+    ["适合人群", "第一次去伊犁的情侣自驾"]
   ];
   planStats.innerHTML = stats.map(([label, value]) => `<div class="stat-card"><div class="stat-label">${label}</div><div class="stat-value">${value}</div></div>`).join("");
 }
@@ -201,7 +201,7 @@ function renderItinerary(plan) {
     const metrics = getRouteMetrics(item.path, item.flightOnly);
     return `
       <article class="day-card ${active ? "is-active" : ""}">
-        <button type="button" data-day="${item.day}" aria-label="Show route for day ${item.day}">
+        <button type="button" data-day="${item.day}" aria-label="查看第 ${item.day} 天路线">
           <div class="day-top">
             <div><div class="day-num">D${item.day}</div></div>
             <span class="tag">${item.focus}</span>
@@ -209,10 +209,10 @@ function renderItinerary(plan) {
           <div class="route-line">${item.title}</div>
           <p class="day-date">${item.date}</p>
           <div class="meta-row">
-            <span class="pill">route: ${item.routeLabel}</span>
-            <span class="pill">distance: ${metrics.distanceText}</span>
-            <span class="pill">drive: ${metrics.durationText}</span>
-            <span class="pill">stay: ${item.stay}</span>
+            <span class="pill">路线：${item.routeLabel}</span>
+            <span class="pill">里程：${metrics.distanceText}</span>
+            <span class="pill">车程：${metrics.durationText}</span>
+            <span class="pill">住宿：${item.stay}</span>
           </div>
           <p class="notes">${item.notes}</p>
         </button>
@@ -229,7 +229,7 @@ function renderItinerary(plan) {
 
   const activeDay = plan.days.find((day) => day.day === state.activeDay);
   const metrics = getRouteMetrics(activeDay.path, activeDay.flightOnly);
-  mapHint.textContent = `Selected: day ${state.activeDay} · ${activeDay.routeLabel} · ${metrics.distanceText} · ${metrics.durationText}`;
+  mapHint.textContent = `当前已选第 ${state.activeDay} 天：${activeDay.routeLabel} · ${metrics.distanceText} · ${metrics.durationText}`;
 }
 
 function renderCompareGrid() {
@@ -275,8 +275,8 @@ async function renderMap(plan) {
     if (token !== state.renderToken) return;
     const quotaExceeded = String(error.message || "").includes("CUQPS_HAS_EXCEEDED_THE_LIMIT");
     mapHint.textContent = quotaExceeded
-      ? "Route loading failed: AMap quota exceeded. The page now loads only the selected day. Wait for quota reset or use a new key."
-      : `Route loading failed: ${error.message}`;
+      ? "路线加载失败：高德配额已超限。页面当前仅保留当天选中路线，请等待配额重置或更换 Key。"
+      : `路线加载失败：${error.message}`;
   }
 }
 
@@ -319,7 +319,7 @@ function renderPlaceMarkers(plan) {
 }
 
 function getRouteMetrics(path, flightOnly) {
-  if (flightOnly) return { distanceText: "flight about 4300 km", durationText: "flight day" };
+  if (flightOnly) return { distanceText: "航程约 4300 公里", durationText: "当天飞行" };
   const cached = routeCache.get(createPathKey(path));
   if (cached?.status === "resolved") {
     return {
@@ -327,7 +327,7 @@ function getRouteMetrics(path, flightOnly) {
       durationText: formatDuration(cached.data.durationSeconds)
     };
   }
-  return { distanceText: "loading route...", durationText: "loading route..." };
+  return { distanceText: "路线加载中...", durationText: "路线加载中..." };
 }
 
 function getRouteForPath(path) {
@@ -377,7 +377,7 @@ function getDrivingLeg(startId, endId) {
 
   const start = places[startId];
   const end = places[endId];
-  if (!start || !end) return Promise.reject(new Error(`Unknown place: ${startId} -> ${endId}`));
+  if (!start || !end) return Promise.reject(new Error(`未知地点：${startId} -> ${endId}`));
 
   const url = new URL("https://restapi.amap.com/v3/direction/driving");
   url.searchParams.set("key", AMAP_KEY);
@@ -389,7 +389,7 @@ function getDrivingLeg(startId, endId) {
   const promise = jsonpRequest(url.toString())
     .then((payload) => {
       if (payload.status !== "1" || !payload.route?.paths?.length) {
-        throw new Error(payload.info || "No route returned");
+        throw new Error(payload.info || "未返回可用路线");
       }
 
       const bestPath = payload.route.paths[0];
@@ -425,7 +425,7 @@ function jsonpRequest(baseUrl) {
     const script = document.createElement("script");
     const timeout = setTimeout(() => {
       cleanup();
-      reject(new Error("route request timed out"));
+      reject(new Error("路线请求超时"));
     }, 12000);
 
     const cleanup = () => {
@@ -441,7 +441,7 @@ function jsonpRequest(baseUrl) {
 
     script.onerror = () => {
       cleanup();
-      reject(new Error("route request failed"));
+      reject(new Error("路线请求失败"));
     };
 
     script.src = `${baseUrl}&callback=${callbackName}`;
@@ -458,17 +458,17 @@ function decodePolyline(polyline) {
 }
 
 function formatDistance(distanceMeters) {
-  if (!distanceMeters) return "n/a";
-  return `${(distanceMeters / 1000).toFixed(distanceMeters >= 100000 ? 0 : 1)} km`;
+  if (!distanceMeters) return "暂无";
+  return `${(distanceMeters / 1000).toFixed(distanceMeters >= 100000 ? 0 : 1)} 公里`;
 }
 
 function formatDuration(durationSeconds) {
-  if (!durationSeconds) return "n/a";
+  if (!durationSeconds) return "暂无";
   const hours = Math.floor(durationSeconds / 3600);
   const minutes = Math.round((durationSeconds % 3600) / 60);
-  if (hours <= 0) return `${minutes} min`;
-  if (minutes === 0) return `${hours} h`;
-  return `${hours} h ${minutes} min`;
+  if (hours <= 0) return `${minutes} 分钟`;
+  if (minutes === 0) return `${hours} 小时`;
+  return `${hours} 小时 ${minutes} 分钟`;
 }
 
 function createPathKey(path) {
