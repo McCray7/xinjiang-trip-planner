@@ -1,25 +1,25 @@
-# Xinjiang Trip Planner Web
+# 新疆旅行计划 Web
 
-Mobile-first static site for comparing two Xinjiang Yili road trip plans.
+这是一个手机优先的静态网页，用来比较两套新疆伊犁自驾方案。
 
-## Features
+## 功能
 
-- switch between `8D7N` and `6D5N`
-- show daily route, hotel stop, estimated distance, and drive time
-- highlight the selected day on a real world map
-- compare both plans quickly
-- keep a before-you-go checklist
+- 切换 `8天7晚` 和 `6天5晚`
+- 查看每日路线、住宿、预计里程和驾驶时长
+- 在真实世界地图上高亮当前选中的日程
+- 快速比较两套方案
+- 查看出发前清单
 
-## Map
+## 地图
 
-This version uses `Leaflet + OpenStreetMap` for the real map layer and does not require an API key.
+当前版本使用 `Leaflet + OpenStreetMap` 作为真实地图底图，不需要额外 API Key。
 
-Distance and drive time are stored as planning estimates in local data. They are meant for trip planning and sharing, not live navigation.
+距离和驾驶时间保存在本地数据中，定位为旅行规划预估值，用于分享和行程查看，不等同于实时导航结果。
 
-## Open locally
+## 本地打开
 
-Open `index.html` directly, or serve the folder with any static file server.
+直接打开 `index.html`，或者用任意静态文件服务器打开整个目录。
 
-## Deploy
+## 部署
 
-The project works on both GitHub Pages and Vercel as a static site.
+这个项目可以直接部署到 GitHub Pages 或 Vercel。
