@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>新疆自驾旅行计划</title>
+    <meta
+      name="description"
+      content="上海出发新疆伊犁落地自驾旅行计划，支持 8 天 7 晚与 6 天 5 晚方案切换、每日行程查看与路线地图展示。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">Mobile Trip Planner</p>
+        <h1>新疆伊犁落地自驾计划</h1>
+        <p class="hero-copy">
+          面向手机使用设计。切换两套方案，查看每日路线、住宿落点、驾驶强度和整体对比。
+        </p>
+      </header>
+
+      <main class="layout">
+        <section class="panel summary-panel">
+          <div class="summary-top">
+            <div>
+              <p class="section-kicker">推荐结论</p>
+              <h2 id="plan-title">8天7晚更优</h2>
+            </div>
+            <div class="toggle" role="tablist" aria-label="方案切换">
+              <button class="toggle-btn is-active" data-plan="planA" role="tab" aria-selected="true">
+                8天7晚
+              </button>
+              <button class="toggle-btn" data-plan="planB" role="tab" aria-selected="false">
+                6天5晚
+              </button>
+            </div>
+          </div>
+
+          <div class="stats" id="plan-stats"></div>
+          <p class="summary-text" id="plan-summary"></p>
+          <div class="reason-list" id="plan-reasons"></div>
+        </section>
+
+        <section class="panel map-panel">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">路线地图</p>
+              <h2>按天查看行车路线</h2>
+            </div>
+            <p class="map-hint" id="map-hint">点击下方某一天，高亮当天路段。</p>
+          </div>
+
+          <div class="map-stage">
+            <svg id="route-map" viewBox="0 0 390 430" aria-label="新疆旅行路线示意图"></svg>
+            <div class="map-legend">
+              <span><i class="legend-dot plan-color"></i> 当前方案</span>
+              <span><i class="legend-dot active-color"></i> 当前选择日程</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel itinerary-panel">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">每日行程</p>
+              <h2>适合路上随时查看</h2>
+            </div>
+            <button class="ghost-btn" id="jump-best-day" type="button">跳到推荐亮点日</button>
+          </div>
+          <div class="itinerary-list" id="itinerary-list"></div>
+        </section>
+
+        <section class="panel compare-panel">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">两案对比</p>
+              <h2>一眼看出差异</h2>
+            </div>
+          </div>
+          <div class="compare-grid" id="compare-grid"></div>
+        </section>
+
+        <section class="panel checklist-panel">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">出发前</p>
+              <h2>执行清单</h2>
+            </div>
+          </div>
+          <ol class="checklist" id="checklist"></ol>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
