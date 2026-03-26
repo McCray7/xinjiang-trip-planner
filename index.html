@@ -6,9 +6,8 @@
     <title>Xinjiang Road Trip Planner</title>
     <meta
       name="description"
-      content="Mobile-first Xinjiang Yili road trip planner with real driving routes, distance, and drive time."
+      content="Mobile-first Xinjiang Yili road trip planner using AMap for real road routes, distance, and drive time."
     />
-    <link rel="stylesheet" href="./vendor/leaflet.css" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -17,8 +16,8 @@
         <p class="eyebrow">Mobile Trip Planner</p>
         <h1>Xinjiang Yili Road Trip</h1>
         <p class="hero-copy">
-          Mobile-first trip planner with real driving routes powered by AMap route service.
-          Tap a day to see the actual road path, distance, drive time, and hotel stop.
+          Mobile-first trip planner using AMap for the real map and real driving routes.
+          Tap a day card to view the actual road path, distance, drive time, and hotel stop.
         </p>
       </header>
 
@@ -47,20 +46,20 @@
         <section class="panel map-panel">
           <div class="section-head">
             <div>
-              <p class="section-kicker">Real Route Map</p>
-              <h2>Actual roads instead of straight lines</h2>
+              <p class="section-kicker">AMap</p>
+              <h2>Real driving roads</h2>
             </div>
-            <p class="map-hint" id="map-hint">Tap a day card below to highlight that day's real driving route.</p>
+            <p class="map-hint" id="map-hint">Tap a day card below to highlight that day's real route.</p>
           </div>
 
           <div class="map-stage">
-            <div id="real-map" class="real-map" aria-label="Real road trip map"></div>
+            <div id="real-map" class="real-map" aria-label="AMap real route map"></div>
             <div class="map-legend">
               <span><i class="legend-dot plan-color"></i> full plan routes</span>
               <span><i class="legend-dot active-color"></i> selected day route</span>
             </div>
-            <p class="map-mode-note" id="map-mode-note">
-              Route geometry, distance, and drive time come from AMap driving route service. Values may vary by route strategy and road conditions.
+            <p class="map-mode-note">
+              Route geometry, distance, and drive time come from AMap driving route service.
             </p>
           </div>
         </section>
@@ -98,7 +97,6 @@
       </main>
     </div>
 
-    <script src="./vendor/leaflet.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>

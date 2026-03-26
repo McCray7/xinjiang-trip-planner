@@ -189,6 +189,7 @@ button {
   min-height: 320px;
   border-radius: 18px;
   overflow: hidden;
+  background: #eef3f1;
 }
 
 .map-error {
@@ -202,29 +203,6 @@ button {
   background: rgba(255, 253, 249, 0.88);
   border: 1px solid rgba(124, 85, 56, 0.1);
   border-radius: 18px;
-}
-
-.map-error,
-.map-loading {
-  display: grid;
-  place-items: center;
-  min-height: 320px;
-  padding: 20px;
-  text-align: center;
-  line-height: 1.7;
-  color: var(--muted);
-  background: rgba(255, 253, 249, 0.88);
-  border: 1px solid rgba(124, 85, 56, 0.1);
-  border-radius: 18px;
-}
-
-.leaflet-container {
-  font: inherit;
-  background: #eaf0ee;
-}
-
-.leaflet-control-attribution {
-  font-size: 10px;
 }
 
 .map-hint {
@@ -278,7 +256,7 @@ button {
   background: var(--mint);
 }
 
-.leaflet-tooltip.route-label {
+.amap-label {
   background: rgba(255, 248, 240, 0.96);
   border: 1px solid rgba(124, 85, 56, 0.12);
   border-radius: 999px;
@@ -286,10 +264,7 @@ button {
   color: var(--text);
   font-weight: 700;
   padding: 4px 10px;
-}
-
-.leaflet-tooltip.route-label::before {
-  display: none;
+  white-space: nowrap;
 }
 
 .ghost-btn {

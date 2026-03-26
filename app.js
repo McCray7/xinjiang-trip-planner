@@ -1,4 +1,4 @@
-const AMAP_WEB_SERVICE_KEY = "f2ab236a325dd234cbfa55b782ec5bb8";
+const AMAP_KEY = "f2ab236a325dd234cbfa55b782ec5bb8";
 
 const places = {
   Shanghai: { label: "Shanghai", lat: 31.2304, lng: 121.4737 },
@@ -23,93 +23,20 @@ const plans = {
     verdict:
       "This plan finishes the strongest scenic stretch before the holiday peak, gives you a fuller loop, and spreads fixed costs over more useful days.",
     reasons: [
-      "Only the final part overlaps with the Dragon Boat holiday peak.",
+      "Only the final part overlaps with the holiday peak.",
       "It covers Sayram Lake, Kalajun, Nalati, Huocheng, and Qiongkushitai without major cuts.",
       "It is more couple-friendly because the pace is less rushed."
     ],
     highlightDay: 3,
     days: [
-      {
-        day: 1,
-        date: "Jun 13 Sat",
-        title: "Fly to Yining",
-        routeLabel: "Shanghai -> Yining",
-        stay: "Yining",
-        focus: "rest",
-        notes: "Keep day one light. Walk around Kazanqi or Liuxing Street and sleep early.",
-        path: ["Shanghai", "Yining"]
-      },
-      {
-        day: 2,
-        date: "Jun 14 Sun",
-        title: "Huocheng lavender and Sayram Lake",
-        routeLabel: "Yining -> Huocheng -> Sayram Lake",
-        stay: "Sayram Lake area",
-        focus: "flowers and lake",
-        notes: "Visit lavender in the morning, then head to Sayram Lake for sunset and the next morning.",
-        path: ["Yining", "Huocheng", "SayramLake"]
-      },
-      {
-        day: 3,
-        date: "Jun 15 Mon",
-        title: "Sayram Lake loop then Tekes",
-        routeLabel: "Sayram Lake -> Tekes",
-        stay: "Tekes",
-        focus: "lake loop",
-        notes: "This is the highlight day. Prioritize the lake loop, then drive to Tekes.",
-        path: ["SayramLake", "Tekes"]
-      },
-      {
-        day: 4,
-        date: "Jun 16 Tue",
-        title: "Full Kalajun day",
-        routeLabel: "Tekes -> Kalajun -> Tekes",
-        stay: "Tekes",
-        focus: "grassland",
-        notes: "Give Kalajun a full day. Do not compress it into a quick stop.",
-        path: ["Tekes", "Kalajun", "Tekes"]
-      },
-      {
-        day: 5,
-        date: "Jun 17 Wed",
-        title: "Slow couple day in Qiongkushitai",
-        routeLabel: "Tekes -> Qiongkushitai",
-        stay: "Qiongkushitai or Tekes",
-        focus: "village",
-        notes: "Great for cabins, slopes, and optional horse riding.",
-        path: ["Tekes", "Qiongkushitai"]
-      },
-      {
-        day: 6,
-        date: "Jun 18 Thu",
-        title: "Drive to Nalati",
-        routeLabel: "Qiongkushitai -> Nalati",
-        stay: "Nalati town",
-        focus: "grassland road",
-        notes: "Pick one core Nalati line only so the day stays comfortable.",
-        path: ["Qiongkushitai", "Nalati"]
-      },
-      {
-        day: 7,
-        date: "Jun 19 Fri",
-        title: "Holiday starts, avoid the worst crowd",
-        routeLabel: "Nalati -> Tangbula -> Yining",
-        stay: "Nilka or Yining",
-        focus: "flex day",
-        notes: "Do not make Duku Highway mandatory. Tangbula is the safer flexible option.",
-        path: ["Nalati", "Tangbula", "Yining"]
-      },
-      {
-        day: 8,
-        date: "Jun 20 Sat",
-        title: "Fly back",
-        routeLabel: "Yining -> Shanghai",
-        stay: "travel day",
-        focus: "return",
-        notes: "Leave enough buffer for airport car return and the flight.",
-        path: ["Yining", "Shanghai"],
-        flightOnly: true
-      }
+      { day: 1, date: "Jun 13 Sat", title: "Fly to Yining", routeLabel: "Shanghai -> Yining", stay: "Yining", focus: "rest", notes: "Keep day one light.", path: ["Shanghai", "Yining"], flightOnly: true },
+      { day: 2, date: "Jun 14 Sun", title: "Huocheng lavender and Sayram Lake", routeLabel: "Yining -> Huocheng -> Sayram Lake", stay: "Sayram Lake area", focus: "flowers and lake", notes: "Lavender in the morning, lake in the afternoon.", path: ["Yining", "Huocheng", "SayramLake"] },
+      { day: 3, date: "Jun 15 Mon", title: "Sayram Lake loop then Tekes", routeLabel: "Sayram Lake -> Tekes", stay: "Tekes", focus: "lake loop", notes: "Highlight day.", path: ["SayramLake", "Tekes"] },
+      { day: 4, date: "Jun 16 Tue", title: "Full Kalajun day", routeLabel: "Tekes -> Kalajun -> Tekes", stay: "Tekes", focus: "grassland", notes: "Give Kalajun a full day.", path: ["Tekes", "Kalajun", "Tekes"] },
+      { day: 5, date: "Jun 17 Wed", title: "Slow couple day in Qiongkushitai", routeLabel: "Tekes -> Qiongkushitai", stay: "Qiongkushitai or Tekes", focus: "village", notes: "Cabins, slopes, optional horse riding.", path: ["Tekes", "Qiongkushitai"] },
+      { day: 6, date: "Jun 18 Thu", title: "Drive to Nalati", routeLabel: "Qiongkushitai -> Nalati", stay: "Nalati town", focus: "grassland road", notes: "Pick one core Nalati line.", path: ["Qiongkushitai", "Nalati"] },
+      { day: 7, date: "Jun 19 Fri", title: "Holiday starts, avoid the worst crowd", routeLabel: "Nalati -> Tangbula -> Yining", stay: "Nilka or Yining", focus: "flex day", notes: "Tangbula is the safer flexible option.", path: ["Nalati", "Tangbula", "Yining"] },
+      { day: 8, date: "Jun 20 Sat", title: "Fly back", routeLabel: "Yining -> Shanghai", stay: "travel day", focus: "return", notes: "Leave enough airport buffer.", path: ["Yining", "Shanghai"], flightOnly: true }
     ]
   },
   planB: {
@@ -128,67 +55,12 @@ const plans = {
     ],
     highlightDay: 2,
     days: [
-      {
-        day: 1,
-        date: "Jun 17 Wed",
-        title: "Fly to Yining",
-        routeLabel: "Shanghai -> Yining",
-        stay: "Yining",
-        focus: "rest",
-        notes: "Keep day one light so you can start early next day.",
-        path: ["Shanghai", "Yining"]
-      },
-      {
-        day: 2,
-        date: "Jun 18 Thu",
-        title: "Huocheng lavender and Sayram Lake",
-        routeLabel: "Yining -> Huocheng -> Sayram Lake",
-        stay: "Sayram Lake area",
-        focus: "flowers and lake",
-        notes: "This is the smoothest day in the shorter plan.",
-        path: ["Yining", "Huocheng", "SayramLake"]
-      },
-      {
-        day: 3,
-        date: "Jun 19 Fri",
-        title: "Holiday starts, then Tekes",
-        routeLabel: "Sayram Lake -> Tekes",
-        stay: "Tekes",
-        focus: "lake loop",
-        notes: "Start early. Once holiday traffic builds up, the transfer feels much longer.",
-        path: ["SayramLake", "Tekes"]
-      },
-      {
-        day: 4,
-        date: "Jun 20 Sat",
-        title: "Kalajun day",
-        routeLabel: "Tekes -> Kalajun -> Tekes",
-        stay: "Tekes or Xinyuan",
-        focus: "choose one",
-        notes: "This route uses Kalajun as the default real-road example for the day.",
-        path: ["Tekes", "Kalajun", "Tekes"]
-      },
-      {
-        day: 5,
-        date: "Jun 21 Sun",
-        title: "Nalati peak day",
-        routeLabel: "Tekes -> Nalati -> Yining",
-        stay: "Nalati town or Yining",
-        focus: "core grassland",
-        notes: "Holiday tail traffic may be obvious. If the return flight is early next day, go back to Yining at night.",
-        path: ["Tekes", "Nalati", "Yining"]
-      },
-      {
-        day: 6,
-        date: "Jun 22 Mon",
-        title: "Fly back",
-        routeLabel: "Yining -> Shanghai",
-        stay: "travel day",
-        focus: "return",
-        notes: "If you did not return to Yining the night before, the morning will be tight.",
-        path: ["Yining", "Shanghai"],
-        flightOnly: true
-      }
+      { day: 1, date: "Jun 17 Wed", title: "Fly to Yining", routeLabel: "Shanghai -> Yining", stay: "Yining", focus: "rest", notes: "Keep day one light.", path: ["Shanghai", "Yining"], flightOnly: true },
+      { day: 2, date: "Jun 18 Thu", title: "Huocheng lavender and Sayram Lake", routeLabel: "Yining -> Huocheng -> Sayram Lake", stay: "Sayram Lake area", focus: "flowers and lake", notes: "Smoothest day in the short plan.", path: ["Yining", "Huocheng", "SayramLake"] },
+      { day: 3, date: "Jun 19 Fri", title: "Holiday starts, then Tekes", routeLabel: "Sayram Lake -> Tekes", stay: "Tekes", focus: "lake loop", notes: "Start early.", path: ["SayramLake", "Tekes"] },
+      { day: 4, date: "Jun 20 Sat", title: "Kalajun day", routeLabel: "Tekes -> Kalajun -> Tekes", stay: "Tekes or Xinyuan", focus: "grassland", notes: "Kalajun is the default route example for this day.", path: ["Tekes", "Kalajun", "Tekes"] },
+      { day: 5, date: "Jun 21 Sun", title: "Nalati peak day", routeLabel: "Tekes -> Nalati -> Yining", stay: "Nalati town or Yining", focus: "core grassland", notes: "Traffic may build up.", path: ["Tekes", "Nalati", "Yining"] },
+      { day: 6, date: "Jun 22 Mon", title: "Fly back", routeLabel: "Yining -> Shanghai", stay: "travel day", focus: "return", notes: "Return early if needed.", path: ["Yining", "Shanghai"], flightOnly: true }
     ]
   }
 };
@@ -198,20 +70,20 @@ const compareRows = [
   ["leave pressure", "slightly higher", "slightly lower"],
   ["holiday overlap", "only at the end", "core days overlap"],
   ["traffic risk", "medium", "higher"],
-  ["hotel and rental surge", "medium", "higher"],
+  ["price surge", "medium", "higher"],
   ["coverage", "high", "medium"],
   ["pace", "comfortable", "rushed"],
   ["couple friendly", "high", "medium"],
-  ["cost efficiency", "better", "average"],
+  ["value", "better", "average"],
   ["final call", "best choice", "only if leave is tight"]
 ];
 
 const checklist = [
-  "Compare Shanghai to Yining direct flights against Shanghai to Urumqi to Yining connections. Prioritize total time over headline fare.",
-  "Choose an SUV first. Confirm unlimited mileage, insurance coverage, pickup and dropoff rules, and violation handling.",
-  "Lock Sayram Lake, Tekes, and Nalati hotels early. Those stops are more likely to surge.",
-  "Recheck Duku Highway and Yizhao Highway opening status about seven days before departure.",
-  "If only one person drives, replace the harder mountain day with an easier option."
+  "Compare direct and connecting flights to Yining.",
+  "Choose an SUV first.",
+  "Lock key hotel stops early.",
+  "Recheck Duku and Yizhao road status before departure.",
+  "Use an easier route if only one person drives."
 ];
 
 const routeCache = new Map();
@@ -242,8 +114,15 @@ let markers = [];
 function init() {
   renderCompareGrid();
   renderChecklist();
-  initMap();
-  render();
+  loadAmapScript()
+    .then(() => {
+      initMap();
+      render();
+    })
+    .catch((error) => {
+      renderMapUnavailable(`AMap failed: ${error.message}`);
+      render();
+    });
 
   toggleButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -257,27 +136,31 @@ function init() {
 
   jumpBestDay.addEventListener("click", () => {
     const target = document.querySelector(`[data-day="${plans[state.currentPlanId].highlightDay}"]`);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+}
+
+function loadAmapScript() {
+  return new Promise((resolve, reject) => {
+    if (window.AMap) return resolve();
+    const script = document.createElement("script");
+    script.src = `https://webapi.amap.com/maps?v=2.0&key=${encodeURIComponent(AMAP_KEY)}`;
+    script.async = true;
+    script.onload = resolve;
+    script.onerror = () => reject(new Error("JS API load failed"));
+    document.head.appendChild(script);
   });
 }
 
 function initMap() {
-  if (!window.L || !realMapElement) {
-    renderMapUnavailable("Map failed to load.");
-    return;
-  }
-
-  map = window.L.map(realMapElement, {
-    zoomControl: true,
-    scrollWheelZoom: true
+  if (!window.AMap || !realMapElement) return;
+  map = new window.AMap.Map("real-map", {
+    zoom: 5,
+    center: [84.5, 43.3],
+    viewMode: "2D",
+    mapStyle: "amap://styles/whitesmoke",
+    resizeEnable: true
   });
-
-  window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 18,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(map);
 }
 
 function render() {
@@ -288,7 +171,7 @@ function render() {
   renderReasons(plan);
   renderToggleState();
   renderItinerary(plan);
-  renderMap(plan);
+  if (map) renderMap(plan);
 }
 
 function renderStats(plan) {
@@ -298,30 +181,11 @@ function renderStats(plan) {
     ["value", plan.value],
     ["fit", "first-time couple trip"]
   ];
-
-  planStats.innerHTML = stats
-    .map(
-      ([label, value]) => `
-        <div class="stat-card">
-          <div class="stat-label">${label}</div>
-          <div class="stat-value">${value}</div>
-        </div>
-      `
-    )
-    .join("");
+  planStats.innerHTML = stats.map(([label, value]) => `<div class="stat-card"><div class="stat-label">${label}</div><div class="stat-value">${value}</div></div>`).join("");
 }
 
 function renderReasons(plan) {
-  planReasons.innerHTML = plan.reasons
-    .map(
-      (reason, index) => `
-        <div class="reason-item">
-          <strong>0${index + 1}</strong>
-          <span>${reason}</span>
-        </div>
-      `
-    )
-    .join("");
+  planReasons.innerHTML = plan.reasons.map((reason, index) => `<div class="reason-item"><strong>0${index + 1}</strong><span>${reason}</span></div>`).join("");
 }
 
 function renderToggleState() {
@@ -333,34 +197,29 @@ function renderToggleState() {
 }
 
 function renderItinerary(plan) {
-  itineraryList.innerHTML = plan.days
-    .map((item) => {
-      const active = item.day === state.activeDay;
-      const metrics = getRouteMetrics(item.path, item.flightOnly);
-
-      return `
-        <article class="day-card ${active ? "is-active" : ""}">
-          <button type="button" data-day="${item.day}" aria-label="Show route for day ${item.day}">
-            <div class="day-top">
-              <div>
-                <div class="day-num">D${item.day}</div>
-              </div>
-              <span class="tag">${item.focus}</span>
-            </div>
-            <div class="route-line">${item.title}</div>
-            <p class="day-date">${item.date}</p>
-            <div class="meta-row">
-              <span class="pill">route: ${item.routeLabel}</span>
-              <span class="pill">distance: ${metrics.distanceText}</span>
-              <span class="pill">drive: ${metrics.durationText}</span>
-              <span class="pill">stay: ${item.stay}</span>
-            </div>
-            <p class="notes">${item.notes}</p>
-          </button>
-        </article>
-      `;
-    })
-    .join("");
+  itineraryList.innerHTML = plan.days.map((item) => {
+    const active = item.day === state.activeDay;
+    const metrics = getRouteMetrics(item.path, item.flightOnly);
+    return `
+      <article class="day-card ${active ? "is-active" : ""}">
+        <button type="button" data-day="${item.day}" aria-label="Show route for day ${item.day}">
+          <div class="day-top">
+            <div><div class="day-num">D${item.day}</div></div>
+            <span class="tag">${item.focus}</span>
+          </div>
+          <div class="route-line">${item.title}</div>
+          <p class="day-date">${item.date}</p>
+          <div class="meta-row">
+            <span class="pill">route: ${item.routeLabel}</span>
+            <span class="pill">distance: ${metrics.distanceText}</span>
+            <span class="pill">drive: ${metrics.durationText}</span>
+            <span class="pill">stay: ${item.stay}</span>
+          </div>
+          <p class="notes">${item.notes}</p>
+        </button>
+      </article>
+    `;
+  }).join("");
 
   Array.from(itineraryList.querySelectorAll("button")).forEach((button) => {
     button.addEventListener("click", () => {
@@ -375,25 +234,13 @@ function renderItinerary(plan) {
 }
 
 function renderCompareGrid() {
-  compareGrid.innerHTML = compareRows
-    .map(
-      ([label, a, b]) => `
-        <div class="compare-row">
-          <div class="compare-cell key">
-            <div>${label}</div>
-          </div>
-          <div class="compare-cell">
-            <div class="grid-label">8D7N</div>
-            <div>${a}</div>
-          </div>
-          <div class="compare-cell">
-            <div class="grid-label">6D5N</div>
-            <div>${b}</div>
-          </div>
-        </div>
-      `
-    )
-    .join("");
+  compareGrid.innerHTML = compareRows.map(([label, a, b]) => `
+    <div class="compare-row">
+      <div class="compare-cell key"><div>${label}</div></div>
+      <div class="compare-cell"><div class="grid-label">8D7N</div><div>${a}</div></div>
+      <div class="compare-cell"><div class="grid-label">6D5N</div><div>${b}</div></div>
+    </div>
+  `).join("");
 }
 
 function renderChecklist() {
@@ -401,8 +248,7 @@ function renderChecklist() {
 }
 
 async function renderMap(plan) {
-  if (!map || !window.L) return;
-
+  if (!map || !window.AMap) return;
   const token = ++state.renderToken;
   clearMapLayers();
   renderPlaceMarkers(plan);
@@ -415,29 +261,34 @@ async function renderMap(plan) {
     if (token !== state.renderToken) return;
 
     dayRoutes.forEach((routeResult) => {
-      const polyline = window.L.polyline(routeResult.latLngs, {
-        color: "#b85c38",
-        opacity: 0.48,
-        weight: 4
-      }).addTo(map);
+      const polyline = new window.AMap.Polyline({
+        path: routeResult.lngLats,
+        strokeColor: "#b85c38",
+        strokeOpacity: 0.45,
+        strokeWeight: 5,
+        lineJoin: "round",
+        lineCap: "round"
+      });
+      polyline.setMap(map);
       planPolylines.push(polyline);
     });
 
     if (!selectedDay.flightOnly && selectedDay.path.length >= 2) {
       const selectedRoute = await getRouteForPath(selectedDay.path);
       if (token !== state.renderToken) return;
-      activePolyline = window.L.polyline(selectedRoute.latLngs, {
-        color: "#679b8a",
-        opacity: 0.95,
-        weight: 6
-      }).addTo(map);
+      activePolyline = new window.AMap.Polyline({
+        path: selectedRoute.lngLats,
+        strokeColor: "#679b8a",
+        strokeOpacity: 0.95,
+        strokeWeight: 7,
+        lineJoin: "round",
+        lineCap: "round"
+      });
+      activePolyline.setMap(map);
     }
 
-    const layers = [...planPolylines, ...(activePolyline ? [activePolyline] : []), ...markers];
-    if (layers.length) {
-      map.fitBounds(window.L.featureGroup(layers).getBounds(), { padding: [28, 28] });
-    }
-
+    const overlays = [...planPolylines, ...(activePolyline ? [activePolyline] : []), ...markers];
+    if (overlays.length) map.setFitView(overlays, false, [36, 36, 36, 36], 14);
     renderItinerary(plan);
   } catch (error) {
     if (token !== state.renderToken) return;
@@ -446,78 +297,60 @@ async function renderMap(plan) {
 }
 
 function clearMapLayers() {
-  planPolylines.forEach((layer) => map.removeLayer(layer));
+  planPolylines.forEach((item) => item.setMap(null));
   planPolylines = [];
-
   if (activePolyline) {
-    map.removeLayer(activePolyline);
+    activePolyline.setMap(null);
     activePolyline = null;
   }
-
-  markers.forEach((marker) => map.removeLayer(marker));
+  markers.forEach((item) => item.setMap(null));
   markers = [];
 }
 
 function renderPlaceMarkers(plan) {
   const selectedDay = plan.days.find((day) => day.day === state.activeDay);
-  const activePlaceIds = new Set(selectedDay.path);
+  const activePlaces = new Set(selectedDay.path);
+  const allPlaces = new Set();
+  plan.days.forEach((day) => day.path.forEach((placeId) => allPlaces.add(placeId)));
 
-  const allPlaceIds = new Set();
-  plan.days.forEach((day) => day.path.forEach((placeId) => allPlaceIds.add(placeId)));
-
-  allPlaceIds.forEach((placeId) => {
+  allPlaces.forEach((placeId) => {
     const place = places[placeId];
     if (!place) return;
 
-    const marker = window.L
-      .marker([place.lat, place.lng], {
-        icon: window.L.divIcon({
-          className: "",
-          html: `<div class="map-pin ${activePlaceIds.has(placeId) ? "is-active" : ""}"></div>`,
-          iconSize: [18, 18],
-          iconAnchor: [9, 9]
-        })
-      })
-      .addTo(map)
-      .bindTooltip(place.label, {
-        permanent: true,
-        direction: "right",
-        offset: [10, 0],
-        className: "route-label"
-      });
+    const marker = new window.AMap.Marker({
+      position: [place.lng, place.lat],
+      offset: new window.AMap.Pixel(-9, -9),
+      title: place.label,
+      content: `<div class="map-pin ${activePlaces.has(placeId) ? "is-active" : ""}"></div>`
+    });
+    marker.setMap(map);
 
-    markers.push(marker);
+    const labelMarker = new window.AMap.Marker({
+      position: [place.lng, place.lat],
+      offset: new window.AMap.Pixel(12, -10),
+      content: `<div class="amap-label">${place.label}</div>`
+    });
+    labelMarker.setMap(map);
+
+    markers.push(marker, labelMarker);
   });
 }
 
 function getRouteMetrics(path, flightOnly) {
-  if (flightOnly) {
-    return {
-      distanceText: "flight about 4300 km",
-      durationText: "flight day"
-    };
-  }
-
-  const cacheKey = createPathKey(path);
-  const cached = routeCache.get(cacheKey);
-
+  if (flightOnly) return { distanceText: "flight about 4300 km", durationText: "flight day" };
+  const cached = routeCache.get(createPathKey(path));
   if (cached?.status === "resolved") {
     return {
       distanceText: formatDistance(cached.data.distanceMeters),
       durationText: formatDuration(cached.data.durationSeconds)
     };
   }
-
-  return {
-    distanceText: "loading route...",
-    durationText: "loading route..."
-  };
+  return { distanceText: "loading route...", durationText: "loading route..." };
 }
 
 function getRouteForPath(path) {
   const cacheKey = createPathKey(path);
   const cached = routeCache.get(cacheKey);
-
   if (cached?.status === "resolved") return Promise.resolve(cached.data);
   if (cached?.status === "pending") return cached.promise;
 
@@ -537,46 +370,35 @@ function getRouteForPath(path) {
 
 async function buildRouteFromLegs(path) {
   const legResults = [];
-
   for (let index = 0; index < path.length - 1; index += 1) {
-    const startId = path[index];
-    const endId = path[index + 1];
-    legResults.push(await getDrivingLeg(startId, endId));
+    legResults.push(await getDrivingLeg(path[index], path[index + 1]));
   }
 
-  const latLngs = [];
+  const lngLats = [];
   let distanceMeters = 0;
   let durationSeconds = 0;
 
   legResults.forEach((leg, index) => {
     distanceMeters += leg.distanceMeters;
     durationSeconds += leg.durationSeconds;
-    latLngs.push(...(index === 0 ? leg.latLngs : leg.latLngs.slice(1)));
+    lngLats.push(...(index === 0 ? leg.lngLats : leg.lngLats.slice(1)));
   });
 
-  return {
-    distanceMeters,
-    durationSeconds,
-    latLngs
-  };
+  return { lngLats, distanceMeters, durationSeconds };
 }
 
 function getDrivingLeg(startId, endId) {
   const legKey = `leg:${startId}->${endId}`;
   const cached = routeCache.get(legKey);
-
   if (cached?.status === "resolved") return Promise.resolve(cached.data);
   if (cached?.status === "pending") return cached.promise;
 
   const start = places[startId];
   const end = places[endId];
-
-  if (!start || !end) {
-    return Promise.reject(new Error(`Unknown place in route: ${startId} -> ${endId}`));
-  }
+  if (!start || !end) return Promise.reject(new Error(`Unknown place: ${startId} -> ${endId}`));
 
   const url = new URL("https://restapi.amap.com/v3/direction/driving");
-  url.searchParams.set("key", AMAP_WEB_SERVICE_KEY);
+  url.searchParams.set("key", AMAP_KEY);
   url.searchParams.set("origin", `${start.lng},${start.lat}`);
   url.searchParams.set("destination", `${end.lng},${end.lat}`);
   url.searchParams.set("extensions", "all");
@@ -584,31 +406,22 @@ function getDrivingLeg(startId, endId) {
 
   const promise = jsonpRequest(url.toString())
     .then((payload) => {
-      if (payload.status !== "1" || !payload.route || !payload.route.paths || !payload.route.paths.length) {
-        throw new Error(payload.info || "AMap route service returned no path");
+      if (payload.status !== "1" || !payload.route?.paths?.length) {
+        throw new Error(payload.info || "No route returned");
       }
 
       const bestPath = payload.route.paths[0];
-      const steps = bestPath.steps || [];
-      const latLngs = [];
-
-      steps.forEach((step, index) => {
+      const lngLats = [];
+      (bestPath.steps || []).forEach((step, index) => {
         const points = decodePolyline(step.polyline);
-        latLngs.push(...(index === 0 ? points : points.slice(1)));
+        lngLats.push(...(index === 0 ? points : points.slice(1)));
       });
-
-      if (!latLngs.length) {
-        const fallback = [
-          [start.lat, start.lng],
-          [end.lat, end.lng]
-        ];
-        latLngs.push(...fallback);
-      }
+      if (!lngLats.length) lngLats.push([start.lng, start.lat], [end.lng, end.lat]);
 
       return {
+        lngLats,
         distanceMeters: Number(bestPath.distance || 0),
-        durationSeconds: Number(bestPath.duration || 0),
-        latLngs
+        durationSeconds: Number(bestPath.duration || 0)
       };
     })
     .then((result) => {
@@ -628,6 +441,11 @@ function jsonpRequest(baseUrl) {
   return new Promise((resolve, reject) => {
     const callbackName = `amap_jsonp_${Date.now()}_${Math.floor(Math.random() * 100000)}`;
     const script = document.createElement("script");
+    const timeout = setTimeout(() => {
+      cleanup();
+      reject(new Error("route request timed out"));
+    }, 12000);
+
     const cleanup = () => {
       delete window[callbackName];
       script.remove();
@@ -639,14 +457,9 @@ function jsonpRequest(baseUrl) {
       resolve(payload);
     };
 
-    const timeout = setTimeout(() => {
-      cleanup();
-      reject(new Error("AMap route request timed out"));
-    }, 12000);
-
     script.onerror = () => {
       cleanup();
-      reject(new Error("Failed to load AMap route data"));
+      reject(new Error("route request failed"));
     };
 
     script.src = `${baseUrl}&callback=${callbackName}`;
@@ -658,7 +471,7 @@ function decodePolyline(polyline) {
   if (!polyline) return [];
   return polyline.split(";").map((pair) => {
     const [lng, lat] = pair.split(",").map(Number);
-    return [lat, lng];
+    return [lng, lat];
   });
 }
 
